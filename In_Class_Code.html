@@ -50,8 +50,14 @@
                 const afternoonSession = ref(false)
 
                 const sessionsAttended = computed( () => {
-                    // TODO create an array with the names of each session selected
-                    //  if no sessions selected, return empty array
+                    const sessions = []
+                    if (morningSession.value === true) {
+                        sessions.push('Morning')
+                    }
+                    if (afternoonSession.value === true) {
+                        sessions.push('Afternoon')
+                    } 
+                    return sessions
                 })
 
                 // TODO create a computed property to return a string with the names of the 
