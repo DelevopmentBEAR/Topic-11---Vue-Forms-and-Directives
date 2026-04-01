@@ -73,11 +73,27 @@
                 })
 
                 const submitRegistration = () => {
-                    alert('Form submitted')
-                    // TODO (optional) remove the alert above 
-                    // validate form
-                    //   if errors, show an alert with the errors found in the form
-                    //   else, show an alert with the message "You are registered!"
+                    
+
+                    // Logs the form data to the console
+                    console.log('Name:', name.value)
+                    console.log('Morning session:', morningSession.value)
+                    console.log('Afternoon session:', afternoonSession.value)
+
+                    // If the name is empty, throw an error with the message 'Name is required'
+                    // If no sessions are selected, throw an error with the message 'At least one session must be selected' 
+                    // If there are no errors, display an alert with the message 'You are registered!'
+                    try {
+                        if (name.value === '') {
+                            throw new Error('Name is required')
+                        }
+                        if (sessionsAttended.value.length === 0) {
+                            throw new Error('At least one session must be selected')
+                        }
+                        alert('You are registered!')
+                    } catch (error) {
+                        alert(error.message)
+                    }
                 }
 
                 return {
