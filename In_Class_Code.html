@@ -49,6 +49,8 @@
                 const morningSession = ref(false)
                 const afternoonSession = ref(false)
 
+                // A computed property to return an array with the names of the sessions selected. 
+                // If no sessions are selected, return an empty array.
                 const sessionsAttended = computed( () => {
                     const sessions = []
                     if (morningSession.value === true) {
@@ -60,8 +62,15 @@
                     return sessions
                 })
 
-                // TODO create a computed property to return a string with the names of the 
-                //  sessions selected. If no sessions are selected, return the string 'No sessions selected'
+                // A computed property to return a string with the names of the sessions selected.
+                // If no sessions are selected, return the string 'No sessions selected'
+                const sessionsAttendedString = computed( () => {
+                    if (sessionsAttended.value.length === 0) {
+                        return 'No sessions selected'
+                    } else {
+                        return sessionsAttended.value.join(', ')
+                    }
+                })
 
                 const submitRegistration = () => {
                     alert('Form submitted')
@@ -72,16 +81,16 @@
                 }
 
                 return {
-                    // refs - reactive data 
+                    // refs - Reactive data 
                     name, 
                     morningSession,
                     afternoonSession,
 
-                    // computed properties
-                    // TODO add your new computed property 
+                    // Computed properties
                     sessionsAttended,
+                    sessionsAttendedString,
 
-                    // functions 
+                    // Functions 
                     submitRegistration
                 }
 
